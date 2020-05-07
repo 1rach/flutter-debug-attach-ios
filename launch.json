@@ -1,0 +1,28 @@
+{
+    
+    
+   
+    "inputs": [
+        {
+            "id": "DEBUG_URI",
+            "type": "command",
+            "command": "shellCommand.execute",
+            "args": {
+                "command": "cat ~PATH_OF_YOUR_APP/observatoryUri.txt",               
+                "useFirstResult": "true",
+            }
+        }
+    ],
+    
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Flutter attach",
+            "request": "attach",
+            "type": "dart",            
+            "observatoryUri": "${input:DEBUG_URI}",                     
+        },
+
+
+    ]
+}
