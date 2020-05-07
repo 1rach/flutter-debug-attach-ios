@@ -13,7 +13,6 @@
 #############################################################################################################################
 
 #This file will contain the Observatory url we are looking for.
-#FILETOPARSE=~/AndroidStudioProjects/PROD/custom_painter/logtee.txt
 FILETOPARSE=./logtee.txt
 
 
