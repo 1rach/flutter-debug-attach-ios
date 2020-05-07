@@ -4,7 +4,7 @@
 # FOR INFO
 # 
 # This script build your flutter app in debugmode thanks to ios-deploy, and create a log file which will be watch by 
-# the script jeturldebug.sh to find the Observatory url.
+# the script geturldebug.sh to find the Observatory url.
 # 
 # Note : The app is desinstalled/installed in each time. 
 #
