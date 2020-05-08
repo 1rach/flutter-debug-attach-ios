@@ -1,6 +1,6 @@
 # flutter-debug-attach-ios : How to avoid the famous iOS bug "mDNS lookup failed, attempting fallback to reading device log.Waiting for observatory port to be available..."
 
-I encountered this very annoying bug (impossible to attach my debugger on vscode or Android Studio). 
+I encountered this very annoying bug (impossible to attach my debugger on vscode or Android Studio) on a real IOS device.
 
 This bug appears with IOS > 13.3.1 when working on MacOS.
 
