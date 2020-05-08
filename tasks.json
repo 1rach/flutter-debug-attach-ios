@@ -9,8 +9,8 @@
             "detail": "IOS : Build debug & deploy the flutter app, attach the debugger (Main Task)",
     
             "dependsOn": [
-                "2.2 - FLUTTER IOS WATCH URL & ATTACH THE DEBUGGER", //ATTACH THE DEBUGGER AFTER THE URL IS FOUND"
-                "3 - FLUTTER IOS BUILD DEBUG & DEPLOY", //BUILD APP IN DEBUG MODE
+                "2.2 - FLUTTER IOS WATCH URL & ATTACH THE DEBUGGER",
+                "3 - FLUTTER IOS BUILD DEBUG & DEPLOY", 
             ],
             "dependsOrder": "parallel",
             "presentation": {
@@ -25,13 +25,10 @@
         
         {
             "label": "3 - FLUTTER IOS BUILD DEBUG & DEPLOY",
-            "detail": "IOS : Build debug & deploy the flutter app on ios",
-            //
+            "detail": "IOS : Build debug & deploy the flutter app on ios",            
             "type": "shell",
             "command": "./scripts/buildiosdebug.sh",
-            /* "runOptions": {
-                "instanceLimit": 1
-            }, */
+            
             "presentation": {
                 "reveal": "always",
                 "panel": "new",
@@ -39,14 +36,12 @@
                 "group": "group1"
             },
         },
-        /* ************************************************************************************************************************************
-                                           2. Generate the debug observatoryUri url
-            ************************************************************************************************************************************ */
+        
         {
             "label": "2.2 - FLUTTER IOS WATCH URL & ATTACH THE DEBUGGER IN LOG",
             "type": "shell",
-            "command": "./scripts/geturldebug.sh", //SCRIPT SEARCHING FOR THE "observatoryUri url"
-            "detail": "IOS : get the 'observatoryUri url' ", //ex. of observatoryUri url : http://http://127.0.0.1:50765/WCdE54vDjUU=/
+            "command": "./scripts/geturldebug.sh",
+            "detail": "IOS : get the 'observatoryUri url' ",
             "presentation": {
                 "clear": true,
                 "echo": true,
