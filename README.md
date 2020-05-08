@@ -6,7 +6,7 @@ This bug appears with IOS > 13.3.1 when working on MacOS.
 
 I decided to find a solution, that's why i created 2 scripts, some vscode tasks, and adapted my launch.json. 
 
-With this solution you can just launch one task in vscode (<CTRL>+<SHIFT>+P by default), and your debugger is launched attaching to your device automaticlly and without bug.
+With this solution you can just launch one task in vscode ( CTRL + SHIFT + P by default), and your debugger is launched attaching to your device automaticlly and without bug.
 
 For information, I'm working with last tools : 
 
