@@ -19,8 +19,7 @@
         {
             "name": "Flutter attach",
             "request": "attach",
-            "type": "dart", 
-             "preLaunchTask": "1 - FLUTTER IOS DEBUG (getting observatoryUri first)",
+            "type": "dart",             
             "observatoryUri": "${input:DEBUG_URI}",                     
         },
 
