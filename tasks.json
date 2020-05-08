@@ -1,24 +1,13 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
+    
     "version": "2.0.0",
     "command": "zsh",
     "tasks": [
-        /* ************************************************************************************************************************************
- 
-                                                               MAIN TASK
- 
-                                                            LAUNCH OF MULTIPLE TASKS:
-                1 - We scan the debug url in the background, as soon as the url is available we attach the debugger
-                2 - in // We launch the debug compilation, we install the app that generates the debug url in the logs which will be retrieved
-            ************************************************************************************************************************************ */
+        
         {
             "label": "1 - FLUTTER IOS DEBUG (getting observatoryUri first)",
-            "detail": "IOS : Build debug & deploy the flutter app, attach the debugger",
-            //"detail": "IOS : Build debug & deploy the flutter app on ios",
-            /* "runOptions": {
-                "instanceLimit": 1 //DOESN'T WORK ??
-            }, */
+            "detail": "IOS : Build debug & deploy the flutter app, attach the debugger (Main Task)",
+    
             "dependsOn": [
                 "2.2 - FLUTTER IOS WATCH URL & ATTACH THE DEBUGGER", //ATTACH THE DEBUGGER AFTER THE URL IS FOUND"
                 "3 - FLUTTER IOS BUILD DEBUG & DEPLOY", //BUILD APP IN DEBUG MODE
@@ -29,13 +18,11 @@
                 "reveal": "always",
                 "focus": true,
                 "showReuseMessage": true,
-                "clear": true, //TEST
-                "panel": "new", //TEST
+                "clear": true,
+                "panel": "new",
             },
         },
-        /* ************************************************************************************************************************************
-                                          1. Generate the file containing the debug url from the log of ios-deploy and lldb
-            ************************************************************************************************************************************ */
+        
         {
             "label": "3 - FLUTTER IOS BUILD DEBUG & DEPLOY",
             "detail": "IOS : Build debug & deploy the flutter app on ios",
@@ -69,15 +56,9 @@
                 "group": "group1"
             },
         },
-        /* ************************************************************************************************************************************
-                                              LAUNCH DEBUG ATTACH FOR THE FLUTTER APP FLUTTER 
-                 Launch task "1 - FLUTTER IOS DEBUG" which launches compilation, the url search in // , THEN launches the debugger in attach 
-                 mode when the url is found
         
-            ************************************************************************************************************************************ */
         {
-            "label": "2.2 - FLUTTER IOS WATCH URL & ATTACH THE DEBUGGER",
-            //"detail": "BUILD & search URL, DEBUG ATTACH...",
+            "label": "2.2 - FLUTTER IOS WATCH URL & ATTACH THE DEBUGGER",        
             "detail": "IOS : search the 'observatoryUri url', then launch the debugger in attach mode using this url",
             "dependsOn": [
                 "2.2 - FLUTTER IOS WATCH URL & ATTACH THE DEBUGGER IN LOG",
