@@ -1,5 +1,20 @@
-# flutter-debug-attach-ios
-With theses 2 scripts and config files, you can attach and debug your flutter app running on iOS > 13.3.1 avoiding the famous iOS mDNS bug
+# flutter-debug-attach-ios : How to avoid the famous iOS bug "mDNS lookup failed, attempting fallback to reading device log.Waiting for observatory port to be available..."
+
+I encountered this very annoying bug (impossible to attach my debugger on vscode or Android Studio). 
+
+This bug appears with IOS > 13.3.1 when working on MacOS.
+
+I decided to find a solution, that's why i created 2 scripts, some vscode tasks, and adapted my launch.json. 
+
+With this solution you can just launch one task in vscode (<CTRL>+<SHIFT>+P by default), and your debugger is launched attaching to your device automaticlly and without bug.
+
+For information, I'm working with last tools : 
+
+* Catalina 10.15.4 with 
+* IOS 13.4.1 running on Ipad 7 cellular plug
+* Flutter stable 1.12.13+hotfix.9
+
+This solution works fine with or without hotspot enabled, firewall enabled on MacOS. 
 
 ## The solution which works in 100% of cases : 
 I created two scripts : 
@@ -19,10 +34,11 @@ I also adapted the launch.json file to launch the debugger in attached mode by p
 I also used the extension "Tasks: Shell input" because it is not possible without extension to launch shell scripts from attach section configuration in the file launch.json without extensions (am I wrong?).
 
 ## How does it works ? 
-Press F5 in VSCode, and wait few seconds ;) :  
-1 - The tasks are launched, and the ObservatoryUri url is created in the file observatoryUri.txt.
-
-2- Vscode will read the url and then launch and attach the debugger to this url.
+1 - Lauch the main task by pressing <CTRL> + <SHIFT>+P 
+2 - Choose the task "1 - FLUTTER IOS DEBUG (getting observatoryUri first)"
+3 - Wait few seconds ;) :  
+ 
+The debugger will be launched automaticlly.
 
 NOTE : Don't forget to set correct PATH of your app, and the timeout value (if necessary, default = 300 seconds)
 
