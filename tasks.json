@@ -1,15 +1,13 @@
-{
-    
+{    
     "version": "2.0.0",
     "command": "zsh",
-    "tasks": [
-        
+    "tasks": [    
         {
             "label": "1 - FLUTTER IOS DEBUG (getting observatoryUri first)",
-            "detail": "IOS : Build debug & deploy the flutter app, attach the debugger (Main Task)",
-    
+            "detail": "IOS : Build debug & deploy the flutter app, attach the debugger",    
             "dependsOn": [
-                "2.2 - FLUTTER IOS WATCH URL & ATTACH THE DEBUGGER",
+    
+                "2.2 - FLUTTER IOS WATCH URL & ATTACH THE DEBUGGER", 
                 "3 - FLUTTER IOS BUILD DEBUG & DEPLOY", 
             ],
             "dependsOrder": "parallel",
@@ -17,48 +15,53 @@
                 "echo": true,
                 "reveal": "always",
                 "focus": true,
-                "showReuseMessage": true,
-                "clear": true,
-                "panel": "new",
+                "showReuseMessage": false,
+                "clear": true,                 
+                "panel": "dedicated"
             },
-        },
-        
+            "runOptions": {
+                "instanceLimit": 1
+            },
+        },        
         {
+            "promptOnClose": false,
             "label": "3 - FLUTTER IOS BUILD DEBUG & DEPLOY",
-            "detail": "IOS : Build debug & deploy the flutter app on ios",            
+            "detail": "IOS : Build debug & deploy the flutter app on ios",
             "type": "shell",
-            "command": "./scripts/buildiosdebug.sh",
-            
+            "command": "./scripts/buildiosdebug.sh;",
             "presentation": {
+                "clear": true,
+                "echo": true,
                 "reveal": "always",
-                "panel": "new",
+                "focus": false,        
                 "showReuseMessage": true,
                 "group": "group1"
             },
-        },
-        
+            "runOptions": {
+                "instanceLimit": 1
+            },
+        },        
         {
             "label": "2.2 - FLUTTER IOS WATCH URL & ATTACH THE DEBUGGER IN LOG",
             "type": "shell",
-            "command": "./scripts/geturldebug.sh",
+            "command": "./scripts/geturldebug.sh", 
             "detail": "IOS : get the 'observatoryUri url' ",
             "presentation": {
                 "clear": true,
                 "echo": true,
                 "reveal": "always",
-                "focus": true,
-                "panel": "new",
+                "focus": false,                
                 "group": "group1"
-            },
-        },
-        
+            },            
+        },        
         {
             "label": "2.2 - FLUTTER IOS WATCH URL & ATTACH THE DEBUGGER",        
             "detail": "IOS : search the 'observatoryUri url', then launch the debugger in attach mode using this url",
             "dependsOn": [
                 "2.2 - FLUTTER IOS WATCH URL & ATTACH THE DEBUGGER IN LOG",
             ],
-            "command": "${command:workbench.action.debug.start}",
-        },
+            "command": "${command:workbench.action.debug.start}",        
+        },      
+                        
     ],
 }
