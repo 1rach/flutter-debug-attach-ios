@@ -1,5 +1,27 @@
 #!/bin/zsh
 
+#############################################################################################################################
+#               Check if lldb is running, if it is we kill it
+#############################################################################################################################
+
+# check if lldb is running
+STATUS_LLDB=$(pgrep -f ios-deploy | wc -l);
+
+if [ "$STATUS_LLDB" -gt 0 ]; 
+then 
+    echo ""    
+    echo " lldb is running... killing lldb...";    
+    pkill -f lldb;
+   
+fi
+
+while [ "$STATUS_LLDB" -gt 0 ]; do 
+STATUS_LLDB=$(pgrep -f lldb | wc -l)
+  
+done
+
+echo ""
+echo "lldb is not running, continue..."
 
 
 #########################################################################################################################
@@ -22,10 +44,14 @@ URL="";
 # Default file that will contain the url  "observatoryUri" that will be use by flutter attach in launch.json, if not set,  "observatoryUri.txt"
 FILE=observatoryUri.txt
 
-FILETOPARSE=~PATH_OF_YOUR_APP/logtee.txt
+#ABSOLUTE PATH
+FILETOPARSE=~/AndroidStudioProjects/PROD/custom_painter/logtee.txt
+#FILETOPARSE=./logtee.txt
+
 
 STRINGTOSEARCH="Observatory listening on http://127.0.0.1:";
 SEARCH=$(grep "$STRINGTOSEARCH" $FILETOPARSE | cut -d ' ' -f 8);
+
 
   #HELP
     if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then 
@@ -48,26 +74,6 @@ SEARCH=$(grep "$STRINGTOSEARCH" $FILETOPARSE | cut -d ' ' -f 8);
     echo "";
     exit 0;
     fi
-
-
-
-#############################################################################################################################
-#  Check if the script $SCRIPT_BUILDER_DEBUG_APP is not running, $SCRIPT_BUILDER_DEBUG_APP must be launched AFTER this script
-#############################################################################################################################
-SCRIPT_BUILDER_DEBUG_APP=buildiosdebug.sh
-
-pkill -f ios-deploy;
-
-#Check if the first script has been  launched
-#STATUS_OF_SCRIPT_BUILDER=$(pgrep -f $SCRIPT_BUILDER_DEBUG_APP | wc -l);
-
-#if [ "$STATUS_OF_SCRIPT_BUILDER" -gt 0 ]; 
-#then 
-#    echo "";
-#    echo "  \033[0;31m--------------------------------------------- /!\ ERROR ! /!\ ---------------------------------------------------\033[0m";    
-#    echo "  The script \033[1;36m$SCRIPT_BUILDER_DEBUG_APP\033[0m is running... STOP IT before continue.";
-#    echo ""  
-#    echo "  /!\ This script \033[1;36m$0\033[0m must be launched first /!\\ \033[0m";
 
 
 ######################################################################################################################################## 
@@ -114,8 +120,10 @@ echo "" > $FILETOPARSE
 #                                Recherche et creation de l'url de debug
 ########################################################################################################################################
 
+
 n=0; 
 isTimeOut="FALSE";
+
 
 while true; 
 do 
@@ -123,29 +131,29 @@ do
     if grep -q "$STRINGTOSEARCH" $FILETOPARSE; then
 
 
-      URLDEBUG=${$(grep "$STRINGTOSEARCH" $FILETOPARSE | cut -d ' ' -f 8)} #$FILE
-      echo $URLDEBUG > $FILE;   
-        
-       break;
+    URLDEBUG=${$(grep "$STRINGTOSEARCH" $FILETOPARSE | cut -d ' ' -f 8)} #$FILE
+    echo $URLDEBUG > $FILE;        
+    break;
     
     
     fi
                
                
                
-      echo -ne "  \033[1;36m   Searching port Observatory listening on... - \033[0m"\\r;
-      sleep 1; 
-      n=$(( $n + 1 ))
+                echo -ne "  $n\033[1;36m   Searching port Observatory listening on... - \033[0m"\\r;
+                sleep 1; 
+                n=$(( $n + 1 ))
                 
-      echo -ne "  \033[1;36m   Searching port Observatory listening on... \ \033[0m"\\r;
-      sleep 1; 
-      n=$(( $n + 1 ))                
-      echo -ne "  \033[1;36m   Searching port Observatory listening on... | \033[0m"\\r;
-      sleep 1; 
-      n=$(( $n + 1 ))
-      echo -ne "  \033[1;36m   Searching port Observatory listening on... / \033[0m"\\r;
-      sleep 1; 
-      n=$(( $n + 1 ))
+                echo -ne "  $n\033[1;36m   Searching port Observatory listening on... \ \033[0m"\\r;
+                sleep 1; 
+                 n=$(( $n + 1 ))                
+                echo -ne "  $n\033[1;36m   Searching port Observatory listening on... | \033[0m"\\r;
+                sleep 1; 
+                 n=$(( $n + 1 ))
+                echo -ne "  $n\033[1;36m   Searching port Observatory listening on... / \033[0m"\\r;
+                sleep 1; 
+                 n=$(( $n + 1 ))
+
   
    if (($n > $TIMEOUT)) 
     then 
@@ -156,6 +164,7 @@ do
     fi
 
 done   
+
 
   if [[ $isTimeOut == "TRUE" ]]
     then 
