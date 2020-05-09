@@ -6,7 +6,7 @@ This bug appears with IOS > 13.3.1 when working on MacOS.
 
 I decided to find a solution, that's why i created 2 scripts, some vscode tasks, and adapted my launch.json. 
 
-With this solution you can just launch one task in vscode ( CTRL + SHIFT + P by default), and your debugger is launched attaching to your device automaticlly and without bug.
+With this solution you can just launch one task in vscode ( by pressing F5 if you use my keybindings.json), and your debugger is launched attaching to your device automaticlly and without bug.
 
 For information, I'm working with last tools : 
 
@@ -34,13 +34,19 @@ I also adapted the launch.json file to launch the debugger in attached mode by p
 I also used the extension "Tasks: Shell input" because it is not possible without extension to launch shell scripts from attach section configuration in the file launch.json without extensions (am I wrong?).
 
 ## How does it works ? 
-1 - Lauch the main task by pressing <CTRL> + <SHIFT>+P 
+1 - Lauch the main task by pressing F5
 2 - Choose the task "1 - FLUTTER IOS DEBUG (getting observatoryUri first)"
 3 - Wait few seconds ;) :  
- 
+
 The debugger will be launched automaticlly.
 
-NOTE : Don't forget to set correct PATH of your app, and the timeout value (if necessary, default = 300 seconds)
+Notes : 
+when your debugger is running, press SHIFT + F5 to stop the debugger (default vscode shortcut). 
+
+Then you can press twice F5 to relaunch all the tasks.
+
+
+NOTE : Don't forget to set correct PATH of your app in scripts, and the timeout value (if necessary, default = 300 seconds)
 
 Happy debugging !
 
