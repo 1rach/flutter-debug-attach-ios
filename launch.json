@@ -8,7 +8,7 @@
             "type": "command",
             "command": "shellCommand.execute",
             "args": {
-                "command": "cat ~PATH_OF_YOUR_APP/observatoryUri.txt",               
+                "command": "cat ${workspaceFolder}/observatoryUri.txt",               
                 "useFirstResult": "true",
             }
         }
