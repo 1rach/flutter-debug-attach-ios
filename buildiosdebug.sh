@@ -13,29 +13,30 @@
 #############################################################################################################################
 
 #This file will contain the Observatory url we are looking for.
+#FILETOPARSE=~/AndroidStudioProjects/PROD/custom_painter/logtee.txt
 FILETOPARSE=./logtee.txt
 
 
 #############################################################################################################################
 #               Check if the script is launched from the root folder
 #############################################################################################################################
-#PUBSPECFILE=pubspec.yaml
-#if [ -f "$PUBSPECFILE" ]; then
-
-#    echo "  File $PUBSPECFILE found, continue...";
-#    sleep 2
-#else
+PUBSPECFILE=pubspec.yaml
+if [ -f "$PUBSPECFILE" ]; then
+#if [ -f "$FILE" ]; then
+    echo "  File $PUBSPECFILE found, continue...";
+    sleep 2
+else
   
-#    echo ""
-#    echo "  \033[0;31m--------------------------------------------- /!\ ERROR ! /!\ ---------------------------------------------------\033[0m";
-#    echo "  File $PUBSPECFILE not found ! ";
-#    echo ""  
-#    echo "\033[1;36m  /!\ This script need to be run from the root folder of your app. /!\\ \033[0m";
-#    echo "";
-#    echo "  The program will exit..."
-#    echo "";
-#    exit 1;
-#fi
+    echo ""
+    echo "  \033[0;31m--------------------------------------------- /!\ ERROR ! /!\ ---------------------------------------------------\033[0m";
+    echo "  File $PUBSPECFILE not found ! ";
+    echo ""  
+    echo "\033[1;36m  /!\ This script need to be run from the root folder of your app. /!\\ \033[0m";
+    echo "";
+    echo "  The program will exit..."
+    echo "";
+    exit 1;
+fi
 
 #############################################################################################################################
 #               Check if the first script (the watcher) is running from the root folder of your app
@@ -52,13 +53,15 @@ else
     echo "";
     echo "  \033[0;31m--------------------------------------------- /!\ ERROR ! /!\ ---------------------------------------------------\033[0m";
     echo "  The script \033[1;36m$SCRIPT_WATCHER\033[0m is not running ! ";
-    echo "" ; 
-    #echo "  /!\ The script \033[1;36m$SCRIPT_WATCHER\033[0m must be launched first /!\\ \033[0m";
+    echo "" ;     
     echo "  /!\ The script \033[1;36m$SCRIPT_WATCHER\033[0m must be launched first /!\\ \033[0m";
     echo "";
    exit 1;
    
 fi
+
+
+
 
 
 #############################################################################################################################
@@ -83,28 +86,23 @@ then
 fi
 
 while [ "$STATUS" -gt 0 ]; do 
-STATUS=$(pgrep -f ios-deploy | wc -l)
-    echo -ne " - "\\r;
-    sleep 1; 
-    echo -ne " \ "\\r;
-    sleep 1; 
-    echo -ne " | "\\r;
-    sleep 1; 
-    echo -ne " / "\\r;
-    sleep 1; 
+    STATUS=$(pgrep -f ios-deploy | wc -l)
 done
 
 echo ""
-echo "ios-deploy is not running...launching it & DEPLOYING THE APP IN DEBUG MODE..."
+echo "ios-deploy is not running, continue..."
+echo "launching flutter build IOS  & DEPLOYING THE APP IN DEBUG MODE..."
 
-#sleep 2
 
 #############################################################################################################################
-#       Deploy the app in debug mode, creating a log file named $FILETOPARSE whil will be analysed by $SCRIPT_WATCHER
+#       Deploy the app in debug mode, creating a log file named $FILETOPARSE which will be analysed by $SCRIPT_WATCHER
 #############################################################################################################################
 #Build the flutter app for IOS in debug mode
-flutter build ios --debug -v && ios-deploy -r --id  658bb48fc978e824d9c87d16c94ea2a7862a858d --bundle build/ios/iphoneos/Runner.app --debug | tee $FILETOPARSE
+# use -r to uninstall and reinstall app
 
-# -r : uninstall lapp avant
+flutter build ios --debug -v && ios-deploy -r --bundle build/ios/iphoneos/Runner.app --debug | tee $FILETOPARSE
+
+
+
 
 exit 0;
