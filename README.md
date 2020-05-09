@@ -3,7 +3,7 @@
 I encountered this very annoying bug (impossible to attach my debugger on vscode or Android Studio) on a real IOS device.
 
 This bug appears with IOS > 13.3.1 when working on MacOS, when debugging a flutter app with Flutter stable 1.12.13+hotfix.9
-or Flutter stable 1.17.0. It seems to be a problem Apple side (?).
+or Flutter stable 1.17.0. (and other versions). It seems to be a problem Apple side (?).
 
 I decided to find a solution, that's why i created 2 scripts, some vscode tasks, and adapted my launch.json. 
 
