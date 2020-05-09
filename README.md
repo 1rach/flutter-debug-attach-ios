@@ -35,8 +35,7 @@ I also used the extension "Tasks: Shell input" because it is not possible withou
 
 ## How does it works ? 
 1 - Lauch the main task by pressing F5
-2 - Choose the task "1 - FLUTTER IOS DEBUG (getting observatoryUri first)"
-3 - Wait few seconds ;) :  
+2 - Wait few seconds ;) :  
 
 The debugger will be launched automaticlly.
 
