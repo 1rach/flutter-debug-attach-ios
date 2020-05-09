@@ -1,0 +1,54 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "ctrl+shift+backspace",
+        "command": "workbench.action.navigateToLastEditLocation"
+    },
+    {
+        "key": "cmd+k cmd+q",
+        "command": "-workbench.action.navigateToLastEditLocation"
+    },
+    {
+        "key": "shift+numpad_divide",
+        "command": "editor.action.commentLine",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "shift+cmd+[Period]",
+        "command": "-editor.action.commentLine",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+numpad_divide",
+        "command": "editor.action.blockComment",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "shift+alt+a",
+        "command": "-editor.action.blockComment",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+e",
+        "command": "workbench.action.splitEditorRight"
+    },
+    {
+        "key": "ctrl+shift+o",
+        "command": "workbench.action.splitEditorDown"
+    },
+    {
+        "key": "ctrl+[Quote]",
+        "command": "workbench.action.focusActiveEditorGroup"
+    },
+    {
+        "key": "ctrl+alt+cmd+t",
+        "command": "workbench.action.tasks.terminate",
+        "args": "terminateAll",
+    },
+    {
+        "key": "f5",
+        "command": "workbench.action.tasks.runTask",
+        "when": "!inDebugMode",
+        "args": "1 - FLUTTER IOS DEBUG (getting observatoryUri first)"
+    },
+]
