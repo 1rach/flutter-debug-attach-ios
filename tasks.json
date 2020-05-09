@@ -52,7 +52,10 @@
                 "reveal": "always",
                 "focus": false,                
                 "group": "group1"
-            },            
+            },    
+            "runOptions": {
+            "instanceLimit": 1
+            },
         },        
         {
             "label": "2.2 - FLUTTER IOS WATCH URL & ATTACH THE DEBUGGER",        
