@@ -51,6 +51,7 @@ FILETOPARSE=~/AndroidStudioProjects/PROD/custom_painter/logtee.txt
 
 STRINGTOSEARCH="Observatory listening on http://127.0.0.1:";
 SEARCH=$(grep "$STRINGTOSEARCH" $FILETOPARSE | cut -d ' ' -f 8);
+SEARCH=$(grep "$STRINGTOSEARCH" $FILETOPARSE | cut -d ' ' -f 10);
 
 
   #HELP
@@ -131,7 +132,7 @@ do
     if grep -q "$STRINGTOSEARCH" $FILETOPARSE; then
 
 
-    URLDEBUG=${$(grep "$STRINGTOSEARCH" $FILETOPARSE | cut -d ' ' -f 8)} #$FILE
+    URLDEBUG=${$(grep "$STRINGTOSEARCH" $FILETOPARSE | cut -d ' ' -f 10)} #$FILE
     echo $URLDEBUG > $FILE;        
     break;
     
